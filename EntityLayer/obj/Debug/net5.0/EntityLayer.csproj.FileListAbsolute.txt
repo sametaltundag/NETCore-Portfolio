@@ -1,0 +1,16 @@
+D:\NETCorePortfolio\EntityLayer\bin\Debug\net5.0\EntityLayer.deps.json
+D:\NETCorePortfolio\EntityLayer\bin\Debug\net5.0\EntityLayer.runtimeconfig.json
+D:\NETCorePortfolio\EntityLayer\bin\Debug\net5.0\EntityLayer.runtimeconfig.dev.json
+D:\NETCorePortfolio\EntityLayer\bin\Debug\net5.0\EntityLayer.dll
+D:\NETCorePortfolio\EntityLayer\bin\Debug\net5.0\EntityLayer.pdb
+D:\NETCorePortfolio\EntityLayer\obj\Debug\net5.0\EntityLayer.csproj.AssemblyReference.cache
+D:\NETCorePortfolio\EntityLayer\obj\Debug\net5.0\EntityLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\NETCorePortfolio\EntityLayer\obj\Debug\net5.0\EntityLayer.AssemblyInfoInputs.cache
+D:\NETCorePortfolio\EntityLayer\obj\Debug\net5.0\EntityLayer.AssemblyInfo.cs
+D:\NETCorePortfolio\EntityLayer\obj\Debug\net5.0\EntityLayer.csproj.CoreCompileInputs.cache
+D:\NETCorePortfolio\EntityLayer\obj\Debug\net5.0\EntityLayer.sourcelink.json
+D:\NETCorePortfolio\EntityLayer\obj\Debug\net5.0\EntityLayer.dll
+D:\NETCorePortfolio\EntityLayer\obj\Debug\net5.0\refint\EntityLayer.dll
+D:\NETCorePortfolio\EntityLayer\obj\Debug\net5.0\EntityLayer.pdb
+D:\NETCorePortfolio\EntityLayer\obj\Debug\net5.0\EntityLayer.genruntimeconfig.cache
+D:\NETCorePortfolio\EntityLayer\obj\Debug\net5.0\ref\EntityLayer.dll
