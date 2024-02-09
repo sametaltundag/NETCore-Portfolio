@@ -1,0 +1,138 @@
+﻿@using EntityLayer.Concrete
+@model List<Skill>
+@{
+    ViewData["Title"] = "Yeteneklerim";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card-header border-0 d-flex justify-content-between">
+    <button type="button" class="btn btn-primary">
+        <span>Yeteneklerim</span>
+        <span class="badge badge-md badge-circle badge-floating badge-secondary p-2 border-white">@Model.Count</span>
+    </button>
+    <button class="btn btn-success" data-toggle="modal" data-target="#yeniyetenekekle">Yeni Yetenek Ekle</button>
+</div>
+
+@*modal*@
+
+<!-- Yetenek ekleme Modal -->
+<div class="modal fade" id="yeniyetenekekle" tabindex="-1" role="dialog" aria-labelledby="yeniyetenekekleTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="yeniyetenekekleTitle">Yeni Yetenek Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Skill/AddSkill">
+
+            
+            <div class="modal-body">
+                <div class="row d-flex flex-column">
+                    <div class="form-group">
+                        <label>Yetenek Adı</label>
+                        <input type="text" class="form-control" name="Title" />
+                    </div>
+                    <div class="form-group">
+                        <label>Oran</label>
+                        <input type="text" class="form-control" name="Value" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Oluştur</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Yetenek Düzenleme Modal -->
+<!-- Düzenleme Modal -->
+<div class="modal fade" id="duzenleModal" tabindex="-1" role="dialog" aria-labelledby="duzenleModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="duzenleModalTitle">Yetenek Düzenle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editSkillForm" method="post" action="/Skill/EditSkill/">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="editTitle">Yetenek Adı</label>
+                        <input type="text" class="form-control" id="editTitle" name="Title" />
+                    </div>
+                    <div class="form-group">
+                        <label for="editValue">Oran</label>
+                        <input type="text" class="form-control" id="editValue" name="Value" />
+                    </div>
+                    <!-- Hidden input to hold the SkillID -->
+                    <input type="hidden" id="editSkillId" name="SkillID" />
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Light table -->
+<div class="table-responsive">
+    <table class="table align-items-center table-flush">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col" class="sort" data-sort="name">#</th>
+                <th scope="col" class="sort" data-sort="budget">Başlık</th>
+                <th scope="col" class="sort" data-sort="status">Oran</th>
+                <th scope="col" class="sort" data-sort="completion">Düzenle</th>
+                <th scope="col">Sil</th>
+            </tr>
+        </thead>
+        <tbody class="list">
+            @foreach(var i in Model)
+            {
+                <tr>
+                    <th scope="row">
+                        <div class="media align-items-center">
+                            <a class="avatar rounded-circle mr-3">
+                                @i.SkillID
+                            </a>
+                        </div>
+                    </th>
+                    <td class="budget">
+                        @i.Title
+                    </td>
+
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span class="completion mr-2">@i.Value%</span>
+                            <div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="@i.Value" aria-valuemin="0" aria-valuemax="100" style="width: @i.Value%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" onclick="openEditModal(@i.SkillID)">Düzenle</button>
+                    </td>
+
+                    <td>
+                        <a href="/Skill/DeleteSkill/@i.SkillID" class="btn btn-danger">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/js/app.js"></script>

@@ -10,7 +10,7 @@ using DataAccessLayer.Repository;
 
 namespace DataAccessLayer.EntityFramework
 {
-    internal class EfPortfolioDal:GenericRepository<Portfolio>, IPortfolioDal
+    public class EfPortfolioDal:GenericRepository<Portfolio>, IPortfolioDal
     {
     }
 }

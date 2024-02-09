@@ -1,0 +1,20 @@
+﻿@using EntityLayer.Concrete
+@model List<About>
+
+<div class="section pt-4 px-3 px-lg-4" id="about">
+    <div class="container-narrow">
+        @foreach(var i in Model)
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="h4 my-2">@i.Title</h2>
+                    <p>@i.Description</p>
+                    
+                </div>
+                <div class="col-md-5 offset-md-1 d-flex align-items-center" data-aos="fade-left" data-aos-delay="100">
+                    <img class="avatar img-fluid mt-2" src="@i.ImageUrl" width="400" height="400" alt="Walter Patterson" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

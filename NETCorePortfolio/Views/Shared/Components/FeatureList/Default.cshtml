@@ -1,0 +1,33 @@
+﻿@using EntityLayer.Concrete
+@model List<Feature>
+
+<header>
+    <div class="cover bg-light">
+        <div class="container px-3">
+            <div class="row text-center">
+                <div class="col-lg-6 p-2"><img class="img-fluid" src="~/Template/images/illustrations/hello3.svg" alt="hello" /></div>
+                <div class="col-lg-6">
+                    @foreach(var i in Model)
+                    {
+                        <div class="mt-5">
+                            <p class="lead text-uppercase mb-1">@i.Title</p>
+                            <h1 class="intro-title marker" data-aos="fade-left" data-aos-delay="50">@i.Description</h1>
+                            <p class="lead fw-normal mt-3" data-aos="fade-up" data-aos-delay="100">@i.SubTitle</p>
+                            <div class="social-nav" data-aos="fade-up" data-aos-delay="200">
+                                <nav role="navigation">
+                                    <ul class="nav justify-content-center">
+                                        <li class="nav-item"><a class="nav-link" target="_blank" href="https://www.instagram.com/sametxaltundag" title="Instagram"><i class="fab fa-instagram"></i><span class="menu-title sr-only">Instagram</span></a></li>
+                                        <li class="nav-item"><a class="nav-link" target="_blank" href="https://www.linkedin.com/in/sametaltundag" title="LinkedIn"><i class="fab fa-linkedin"></i><span class="menu-title sr-only">LinkedIn</span></a></li>
+                                        <li class="nav-item"><a class="nav-link" target="_blank" href="https://www.github.com/sametaltundag" title="GitHub"><i class="fab fa-github"></i><span class="menu-title sr-only">LinkedIn</span></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="mt-3" data-aos="fade-up" data-aos-delay="200"><a class="btn btn-primary shadow-sm mt-1 hover-effect" href="#contact">Bana Ulaş<i class="fas fa-arrow-right"></i></a></div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wave-bg"></div>
+</header>
