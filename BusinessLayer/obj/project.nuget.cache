@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "CuqMx10oZJtdo39O9uZVsECDG3T7mtUWRy/P2X27GQUZkzoTyZLS2EKhsCTSc+9DKqq32GRR9lGqzeFxRhPuUg==",
+  "dgSpecHash": "m69C1RdA20Sutq68K3iMXE2fGKH1JW/Krp5cUeAPZJlmAInPx/LeyYbriRo31Mdo0OEOSsYpRJB4ibE6HB/pOA==",
   "success": true,
   "projectFilePath": "D:\\NETCorePortfolio\\BusinessLayer\\BusinessLayer.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Maraz\\.nuget\\packages\\fluentvalidation\\10.3.6\\fluentvalidation.10.3.6.nupkg.sha512",
+    "C:\\Users\\Maraz\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.6\\fluentvalidation.aspnetcore.10.3.6.nupkg.sha512",
+    "C:\\Users\\Maraz\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.3.6\\fluentvalidation.dependencyinjectionextensions.10.3.6.nupkg.sha512",
     "C:\\Users\\Maraz\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Maraz\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Maraz\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

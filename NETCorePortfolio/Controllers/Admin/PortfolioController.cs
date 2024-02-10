@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace NETCorePortfolio.Controllers.Admin
@@ -17,6 +19,18 @@ namespace NETCorePortfolio.Controllers.Admin
         [HttpPost]
         public IActionResult AddPortfolio(Portfolio portfolio)
         {
+            PortfolioValidator validator = new PortfolioValidator();
+            ValidationResult result = validator.Validate(portfolio);
+
+            if (!result.IsValid)
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName,item.ErrorMessage);
+                }
+                return View(portfolio);
+            }
+
             portfolioManager.TAdd(portfolio);
             return RedirectToAction("Index");
         }

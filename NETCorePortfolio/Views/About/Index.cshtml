@@ -1,0 +1,60 @@
+﻿@model EntityLayer.Concrete.About
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="text-white">Hakkımda</h1>
+
+@using (Html.BeginForm("EditAbout", "About", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.AboutID, new { @value = Model.AboutID })
+
+    <br />
+    <br />
+    @Html.Label("Başlık")
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+
+    <br />
+
+    @Html.Label("Açıklama")
+    @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @rows = "9"})
+
+    <br />
+
+    @Html.Label("Eposta")
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+
+    <br />
+
+    <div class="row">
+        <div class="col-6">
+            @Html.Label("Telefon")
+            @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+        </div>
+
+        <div class="col-6">
+            @Html.Label("Yaş")
+            @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
+        </div>
+    </div>
+
+    
+    <br />
+
+    @Html.Label("Adres")
+    @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+
+    <br />
+
+    @Html.Label("Görsel URL")
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+
+    <br />
+
+    
+    <button class="btn btn-success">Güncelle</button>
+
+
+}

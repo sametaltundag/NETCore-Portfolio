@@ -1,0 +1,92 @@
+﻿@using EntityLayer.Concrete
+@model List<Service>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="text-white">Hizmetlerim</h1>
+<br />
+<br />
+
+<div class="row justify-content-end">
+    <button class="btn btn-success" type="button" id="yenihizmetekle">Yeni Hizmet Ekle</button>
+</div>
+
+<div class="row my-1" id="eklemeformu">
+
+</div>
+<br />
+<div class="row">
+    @foreach(var i in Model)
+    {
+        <div class="col-xl-3 col-md-6">
+            <div class="card card-stats">
+                <form method="post" action="/Service/EditService/">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col d-flex justify-content-center flex-column">
+                            <img src="@i.ImageUrl" height="50"/>
+                            <input type="hidden" name="ImageUrl" value="@i.ImageUrl" />
+                            <br />
+                            <input  type="hidden" value="@i.ServiceID" name="ServiceID"/>
+                            <input type="text" class="form-control" name="Title" value="@i.Title" />
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center mt-3">
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary btn-sm">Güncelle</button>
+                        <a href="/Service/DeleteService/@i.ServiceID" class="btn btn-danger btn-sm">Sil</a>
+                    </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+
+
+<script>
+    var yenihizmetekleButton = document.getElementById("yenihizmetekle");
+
+    yenihizmetekleButton.addEventListener("click", function () {
+        var formElement = document.createElement("form");
+        formElement.setAttribute("method", "post");
+        formElement.setAttribute("action", "/Service/AddService/");
+
+        formElement.innerHTML = `
+            <h2>Yeni Hizmet Ekleme Formu</h2>
+            <br />
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="form-group">
+                    <label>Hizmet Başlığı</label>
+                    <input name="Title" class="form-control" placeholder="Başlığı giriniz.." />
+                </div>
+                <div class="form-group mx-3">
+                    <label>Hizmet Görseli</label>
+                    <input name="ImageUrl" class="form-control" placeholder="Görsel URL giriniz" />
+                </div>
+                <div class="d-flex align-items-center mx-3">
+                    <button class="btn btn-primary" type="submit">Oluştur</button>
+                    <button class="btn btn-dark formkaldır" type="button">Kaldır</button>
+                </div>
+            </div>
+        `;
+
+        // Ekleme formunu içeren div'i seçin
+        var eklemeFormuDiv = document.getElementById("eklemeformu");
+
+        // Ekleme formunu içeren div'in içine yeni formu ekle
+        eklemeFormuDiv.appendChild(formElement);
+
+        var kaldırButton = formElement.querySelector(".formkaldır");
+
+        // Kaldır butonuna tıklanınca çalışacak fonksiyonu tanımlayın
+        kaldırButton.addEventListener("click", function () {
+            // Formu içeren div'i bul ve formu bu div'den kaldır
+            formElement.parentNode.removeChild(formElement);
+        });
+    });
+
+</script>
