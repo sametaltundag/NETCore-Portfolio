@@ -1,6 +1,178 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<Portfolio>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<div class="row">
+    <div class="col">
+        <div class="card bg-default shadow">
+            <div class="card-header bg-transparent border-0 d-flex justify-content-between">
+                <button type="button" class="btn btn-primary">
+                    <span>Projelerim</span>
+                    <span class="badge badge-md badge-circle badge-floating badge-secondary p-2 border-white">@Model.Count</span>
+                </button>
+                <button class="btn btn-success" data-toggle="modal" data-target="#yeniprojeekle">Yeni Proje Ekle</button>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-dark table-flush">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" class="sort" data-sort="name">GORSEL</th>
+                            <th scope="col" class="sort" data-sort="budget">PROJE ADI</th>
+                            <th scope="col" class="sort" data-sort="status">LINK</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="list">
+                        @foreach(var i in Model)
+                        {
+                            <tr>
+                                <th scope="row">
+                                    <div class="media align-items-center">
+                                        <a href="@i.Link" target="_blank" class="avatar mr-3">
+                                            <img alt="Proje Image" src="@i.ImageUrl">
+                                        </a>
+                                    </div>
+                                </th>
+                                <td class="budget">
+                                    @i.Name
+                                </td>
+                                <td>
+                                    <span class="badge badge-dot mr-4">
+                                        <i class="bg-success"></i>
+                                        <a class="status" href="@i.Link" target="_blank">Projeye Git</a>
+                                    </span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" onclick="openEditPortfolio(@i.PortfolioID)">Düzenle</button>
+                                    <a href="/Portfolio/DeletePortfolio/@i.PortfolioID" class="btn btn-danger">Sil</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Yetenek ekleme Modal -->
+<div class="modal fade" id="yeniprojeekle" tabindex="-1" role="dialog" aria-labelledby="yeniprojeekleTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="yeniprojeekleTitle">Yeni Proje Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Portfolio/AddPortfolio">
+
+                <div class="modal-body">
+                    <div class="row d-flex flex-column">
+                        <div class="form-group">
+                            <label>Görsel URL</label>
+                            <input type="text" class="form-control" name="ImageUrl" />
+                        </div>
+                        <div class="form-group">
+                            <label>Proje Adı</label>
+                            <input type="text" class="form-control" name="Name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Link</label>
+                            <input type="text" class="form-control" name="Link" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Oluştur</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Düzenleme Modal -->
+<div class="modal fade" id="duzenleModal" tabindex="-1" role="dialog" aria-labelledby="duzenleModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="duzenleModalTitle">Projeyi Düzenle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editPortfolioForm" method="post" action="/Portfolio/EditPortfolio/">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="editImageUrl">Görsel URL</label>
+                        <input type="text" class="form-control" id="editImageUrl" name="ImageUrl" />
+                    </div>
+                    <div class="form-group">
+                        <label for="editName">Proje Adı</label>
+                        <input type="text" class="form-control" id="editName" name="Name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editLink">Link</label>
+                        <input type="text" class="form-control" id="editLink" name="Link" />
+                    </div>
+                    <input type="hidden" id="editPortfolioId" name="PortfolioID" />
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function openEditPortfolio(portfolioID) {
+        // AJAX isteği yap
+        $.ajax({
+            url: '/Portfolio/GetById/' + portfolioID,
+            type: 'GET',
+            success: function (response) {
+                // Gelen verilerle modalı doldur
+                $('#editImageUrl').val(response.imageurl);
+                $('#editName').val(response.name);
+                $('#editLink').val(response.link);
+                $('#editPortfolioId').val(response.id); 
+
+                $('#duzenleModal').modal('show');
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
+
+    // Kaydet butonuna basıldığında
+    $(document).on('submit', '#editPortfolioForm', function (e) {
+        e.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
+
+        var formData = $(this).serialize(); // Form verilerini al
+        var url = $(this).attr('action'); // Formun gönderileceği URL
+
+        // AJAX isteği yap
+        $.post(url, formData)
+            .done(function (response) {
+                // Başarılı bir şekilde işlem yapıldığında modalı kapat
+                $('#duzenleModal').modal('hide');
+                // İlgili sayfayı yeniden yükle
+                window.location.reload();
+            })
+            .fail(function (error) {
+                console.log(error);
+            });
+    });
+
+
+</script>
