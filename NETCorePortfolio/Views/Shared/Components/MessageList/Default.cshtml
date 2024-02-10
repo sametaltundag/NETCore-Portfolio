@@ -1,0 +1,39 @@
+﻿@using EntityLayer.Concrete
+@model List<Message>
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Son Mesajlar (@Model.Count)</h4>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>MESAJ NO</th>
+                            <th>Ad Soyad</th>
+                            <th>Email</th>
+                            <th>Mesaj</th>
+                            <th>Tarih</th>
+                            <th>Mesaj Durumu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var i in Model)
+                        {
+                            <tr>
+                                <td> @i.MessageID </td>
+                                <td> @i.Name </td>
+                                <td> @i.Mail </td>
+                                <td> @i.Content </td>
+                                <td> @i.Date </td>
+                                <td>
+                                    <div class="badge badge-outline-@(i.Status ? "success" : "danger")">@((i.Status ? "Okunmadı" : "Okundu"))</div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
