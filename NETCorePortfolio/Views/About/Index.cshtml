@@ -2,10 +2,13 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-<h1 class="text-white">Hakkımda</h1>
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">Hakkımda</h3>
+    </div>
 
 @using (Html.BeginForm("EditAbout", "About", FormMethod.Post))
 {
@@ -58,3 +61,4 @@
 
 
 }
+</div>

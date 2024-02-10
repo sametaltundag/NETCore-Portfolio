@@ -179,6 +179,13 @@ D:\NETCorePortfolio\NETCorePortfolio\bin\Debug\net5.0\FluentValidation.Dependenc
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\NETCorePortfolio.MvcApplicationPartsAssemblyInfo.cs
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\About\Index.cshtml.g.cs
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Service\Index.cshtml.g.cs
-D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Dashboard\Index.cshtml.g.cs
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Shared\_NewAdminLayout.cshtml.g.cs
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Experience\Index.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Page\Sidebar.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Page\Navbar.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Reference\Index.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Dashboard\Index.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Shared\Components\DashCard\Default.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Shared\Components\OpenProjects\Default.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Shared\Components\DashCard2\Default.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Shared\Components\MessageList\Default.cshtml.g.cs

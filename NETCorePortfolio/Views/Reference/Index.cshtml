@@ -1,57 +1,69 @@
 ﻿@using EntityLayer.Concrete
-@model List<Portfolio>
+@model List<Reference>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
+
 <div class="content-wrapper">
     <div class="page-header">
-        <h3 class="page-title">Projelerim (@Model.Count()) </h3>
-        <button class="btn btn-success" data-toggle="modal" data-target="#yeniprojeekle">Yeni Proje Ekle</button>
+        <h3 class="page-title">Referanslarım (@Model.Count()) </h3>
+        <button class="btn btn-success" data-toggle="modal" data-target="#yenireferansekle">Referans Ekle</button>
     </div>
 
-    <div class="row">
-        @foreach(var i in Model)
+    @foreach(var i in Model)
         {
-            <div class="col-4 mt-3">
-                <div class="card">
-                    <img src="@i.ImageUrl" class="card-img-top" style="height:200px;width:100%;object-fit:contain;object-position:center;"/>
-                    <div class="card-body">
-                        <h5 class="card-title">@i.Name</h5>
-                        <a href="@i.Link" class="btn btn-success">Projeye Git</a>
-                        <button type="button" class="btn btn-primary" onclick="openEditPortfolio(@i.PortfolioID)">Düzenle</button>
-                        <a href="/Portfolio/DeletePortfolio/@i.PortfolioID" class="btn btn-danger">Sil</a>
-                    </div>
+    <div class="row mt-3">
+        
+            <div class="col-3">
+            <input type="hidden" value="@i.ReferenceID" name="ReferenceID" />
+                <img src="@i.ImageUrl" alt="Reference Image" class="card-img-top">
+            </div>
+            <div class="col-9">
+                <div class="d-flex align-items-center justify-content-start">
+                    <h3>@i.Name |</h3> <span class="px-1">@i.Company</span>
+                </div>
+
+                <textarea class="form-control" rows="7" style="resize:vertical;">@i.Comment</textarea>
+
+                <div class="btn-group d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary" onclick="openEditReference(@i.ReferenceID)">Güncelle</button>
+                    <a href="/Reference/DeleteReference/@i.ReferenceID" class="btn btn-danger">Sil</a>
                 </div>
             </div>
-        }
     </div>
+    }
+
 </div>
 
-<div class="modal fade" id="yeniprojeekle" tabindex="-1" role="dialog" aria-labelledby="yeniprojeekleTitle" aria-hidden="true">
+<div class="modal fade" id="yenireferansekle" tabindex="-1" role="dialog" aria-labelledby="yenireferansekleTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="yeniprojeekleTitle">Yeni Proje Ekle</h5>
+                <h5 class="modal-title" id="yenireferansekleTitle">Yeni Referans Ekle</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" action="/Portfolio/AddPortfolio">
-
+            <form method="post" action="/Reference/AddReference">
                 <div class="modal-body">
                     <div class="row d-flex flex-column">
                         <div class="form-group">
-                            <label>Görsel URL</label>
+                            <label>Referans Görsel URL</label>
                             <input type="text" class="form-control" name="ImageUrl" />
                         </div>
                         <div class="form-group">
-                            <label>Proje Adı</label>
+                            <label>Referans Adı</label>
                             <input type="text" class="form-control" name="Name" />
                         </div>
                         <div class="form-group">
-                            <label>Link</label>
-                            <input type="text" class="form-control" name="Link" />
+                            <label>Şirket/Ünvan</label>
+                            <input type="text" class="form-control" name="Company" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Yorum</label>
+                            <textarea class="form-control" name="Comment" rows="5"></textarea>
                         </div>
                     </div>
                 </div>
@@ -73,22 +85,27 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="editPortfolioForm" method="post" action="/Portfolio/EditPortfolio/">
+            <form id="editReferenceForm" method="post" action="/Reference/EditReference/">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="editImageUrl">Görsel URL</label>
                         <input type="text" class="form-control" id="editImageUrl" name="ImageUrl" />
                     </div>
                     <div class="form-group">
-                        <label for="editName">Proje Adı</label>
+                        <label for="editName">Referans Adı</label>
                         <input type="text" class="form-control" id="editName" name="Name" />
                     </div>
 
                     <div class="form-group">
-                        <label for="editLink">Link</label>
-                        <input type="text" class="form-control" id="editLink" name="Link" />
+                        <label for="editLink">Firma/Ünvan</label>
+                        <input type="text" class="form-control" id="editCompany" name="Company" />
                     </div>
-                    <input type="hidden" id="editPortfolioId" name="PortfolioID" />
+                    
+                    <div class="form-group">
+                        <label for="editLink">Yorum</label>
+                        <textarea class="form-control" id="editComment" name="Comment"></textarea>
+                    </div>
+                    <input type="hidden" id="editReferenceId" name="ReferenceID" />
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Kaydet</button>
@@ -100,17 +117,18 @@
 </div>
 
 <script>
-    function openEditPortfolio(portfolioID) {
+    function openEditReference(referenceID) {
         // AJAX isteği yap
         $.ajax({
-            url: '/Portfolio/GetById/' + portfolioID,
+            url: '/Reference/GetById/' + referenceID,
             type: 'GET',
             success: function (response) {
                 // Gelen verilerle modalı doldur
                 $('#editImageUrl').val(response.imageurl);
                 $('#editName').val(response.name);
-                $('#editLink').val(response.link);
-                $('#editPortfolioId').val(response.id); 
+                $('#editCompany').val(response.company);
+                $('#editComment').val(response.comment);
+                $('#editReferenceId').val(response.id);
 
                 $('#duzenleModal').modal('show');
             },

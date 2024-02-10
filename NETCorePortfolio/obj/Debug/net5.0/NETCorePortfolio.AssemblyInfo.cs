@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NETCorePortfolio")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ffb8e0eed77f753b5b392137de62b9ad9f6c3674")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29e9be2aef0fc44c94e66236657f43c68ea81d06")]
 [assembly: System.Reflection.AssemblyProductAttribute("NETCorePortfolio")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NETCorePortfolio")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

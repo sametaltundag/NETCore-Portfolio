@@ -2,19 +2,52 @@
 @model List<Experience>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title"> Deneyimlerim (@Model.Count()) </h3>
+        <button class="btn btn-success" data-toggle="modal" data-target="#yenideneyimekle">Yeni Deneyim Ekle</button>
+    </div>
 
-<div class="card-header border-0 d-flex justify-content-between">
-    <button type="button" class="btn btn-primary">
-        <span>Deneyimlerim</span>
-        <span class="badge badge-md badge-circle badge-floating badge-secondary p-2 border-white">@Model.Count</span>
-    </button>
-    <button class="btn btn-success" data-toggle="modal" data-target="#yenideneyimekle">Yeni Deneyim Ekle</button>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#ID </th>
+                                    <th>Pozisyon</th>
+                                    <th>Şirket/Konum</th>
+                                    <th>Tarih</th>
+                                    <th>Düzenle</th>
+                                    <th>Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var i in Model)
+                                {
+                                    <tr>
+                                        <td class="py-1">@i.ExperienceID</td>
+                                        <td>@i.Title</td>
+                                        <td>@i.Company </td>
+                                        <td>@i.Date</td>
+                                        <td><button class="btn btn-primary" onclick="openEditExperience(@i.ExperienceID)">Düzenle</button></td>
+                                        <td><a href="/Experience/DeleteExperience/@i.ExperienceID" class="btn btn-danger">Sil</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-@*modal*@
 
 <!-- Yetenek ekleme Modal -->
 <div class="modal fade" id="yenideneyimekle" tabindex="-1" role="dialog" aria-labelledby="yenideneyimekleTitle" aria-hidden="true">
@@ -91,44 +124,6 @@
     </div>
 </div>
 
-
-
-<!-- Light table -->
-<div class="table-responsive">
-    <table class="table align-items-center table-flush">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col" class="sort" data-sort="name">#</th>
-                <th scope="col" class="sort" data-sort="budget">Pozisyon</th>
-                <th scope="col" class="sort" data-sort="status">Konum</th>
-                <th scope="col" class="sort" data-sort="status">Tarih</th>
-                <th scope="col" class="sort" data-sort="completion">Düzenle</th>
-                <th scope="col">Sil</th>
-            </tr>
-        </thead>
-        <tbody class="list">
-            @foreach (var i in Model)
-            {
-                <tr>
-                    <th scope="row">
-                        <div class="media align-items-center">
-                            <a class="avatar rounded-circle mr-3">
-                                @i.ExperienceID
-                            </a>
-                        </div>
-                    </th>
-                    <td class="budget">@i.Title</td>
-                    <td class="budget">@i.Company</td>
-
-                    <td> <span class="completion mr-2">@i.Date</span> </td>
-                    <td><button class="btn btn-primary" onclick="openEditExperience(@i.ExperienceID)">Düzenle</button></td>
-
-                    <td><a href="/Experience/DeleteExperience/@i.ExperienceID" class="btn btn-danger">Sil</a></td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>

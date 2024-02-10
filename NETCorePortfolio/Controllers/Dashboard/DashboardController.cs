@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace NETCorePortfolio.Controllers.Admin
+namespace NETCorePortfolio.Controllers.Dashboard
 {
     public class DashboardController : Controller
     {

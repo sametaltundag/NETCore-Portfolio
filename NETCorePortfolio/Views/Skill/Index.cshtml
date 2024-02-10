@@ -2,14 +2,13 @@
 @model List<Skill>
 @{
     ViewData["Title"] = "Yeteneklerim";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
-<div class="card-header border-0 d-flex justify-content-between">
-    <button type="button" class="btn btn-primary">
-        <span>Yeteneklerim</span>
-        <span class="badge badge-md badge-circle badge-floating badge-secondary p-2 border-white">@Model.Count</span>
-    </button>
+
+<div class="content-wrapper">
+<div class="page-header">
+    <h3 class="page-title">Yeteneklerim (@Model.Count()) </h3>
     <button class="btn btn-success" data-toggle="modal" data-target="#yeniyetenekekle">Yeni Yetenek Ekle</button>
 </div>
 
@@ -82,57 +81,45 @@
     </div>
 </div>
 
-
-
-<!-- Light table -->
-<div class="table-responsive">
-    <table class="table align-items-center table-flush">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col" class="sort" data-sort="name">#</th>
-                <th scope="col" class="sort" data-sort="budget">Başlık</th>
-                <th scope="col" class="sort" data-sort="status">Oran</th>
-                <th scope="col" class="sort" data-sort="completion">Düzenle</th>
-                <th scope="col">Sil</th>
-            </tr>
-        </thead>
-        <tbody class="list">
-            @foreach(var i in Model)
-            {
-                <tr>
-                    <th scope="row">
-                        <div class="media align-items-center">
-                            <a class="avatar rounded-circle mr-3">
-                                @i.SkillID
-                            </a>
-                        </div>
-                    </th>
-                    <td class="budget">
-                        @i.Title
-                    </td>
-
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <span class="completion mr-2">@i.Value%</span>
-                            <div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="@i.Value" aria-valuemin="0" aria-valuemax="100" style="width: @i.Value%;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <button class="btn btn-primary" onclick="openEditModal(@i.SkillID)">Düzenle</button>
-                    </td>
-
-                    <td>
-                        <a href="/Skill/DeleteSkill/@i.SkillID" class="btn btn-danger">Sil</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#ID </th>
+                                <th>Başlık</th>
+                                <th>Oran</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var i in Model)
+                            {
+                                <tr>
+                                    <td class="py-1">@i.SkillID</td>
+                                    <td>@i.Title</td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: @i.Value%" aria-valuenow="@i.Value " aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary" onclick="openEditModal(@i.SkillID)">Düzenle</button>
+                                        <a href="/Skill/DeleteSkill/@i.SkillID" class="btn btn-danger">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="~/js/app.js"></script>
