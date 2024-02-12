@@ -52,6 +52,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Writer\Data\" />
+    <Folder Include="Areas\Writer\Models\" />
     <Folder Include="wwwroot\Template\images\references\" />
   </ItemGroup>
 

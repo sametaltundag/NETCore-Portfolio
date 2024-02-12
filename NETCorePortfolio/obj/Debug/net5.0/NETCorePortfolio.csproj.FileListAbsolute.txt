@@ -189,3 +189,8 @@ D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Shared\Compone
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Shared\Components\OpenProjects\Default.cshtml.g.cs
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Shared\Components\DashCard2\Default.cshtml.g.cs
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Shared\Components\MessageList\Default.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Shared\Components\UserMessage\Default.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Shared\Components\SlideList\Default.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Shared\_WriterLayout.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Areas\Writer\Views\Default\Index.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Areas\Writer\Views\Register\Index.cshtml.g.cs

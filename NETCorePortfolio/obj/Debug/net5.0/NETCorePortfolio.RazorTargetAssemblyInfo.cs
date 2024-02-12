@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyProductAttribute("NETCorePortfolio")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29e9be2aef0fc44c94e66236657f43c68ea81d06")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e60361ba88a2803e8f242f20f4a83454d15ab0bd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NETCorePortfolio.Views")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
