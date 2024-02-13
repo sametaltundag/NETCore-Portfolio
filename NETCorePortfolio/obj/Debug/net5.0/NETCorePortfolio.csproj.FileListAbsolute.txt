@@ -194,3 +194,10 @@ D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Shared\Compone
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\Shared\_WriterLayout.cshtml.g.cs
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Areas\Writer\Views\Default\Index.cshtml.g.cs
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Areas\Writer\Views\Register\Index.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\NETCorePortfolio\NETCorePortfolio\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\NETCorePortfolio\NETCorePortfolio\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\NETCorePortfolio\NETCorePortfolio\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+D:\NETCorePortfolio\NETCorePortfolio\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Areas\Writer\Views\_ViewImports.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Areas\Writer\Views\Login\Index.cshtml.g.cs

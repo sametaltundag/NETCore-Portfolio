@@ -32,6 +32,8 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.12">
       <PrivateAssets>all</PrivateAssets>
@@ -53,7 +55,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Writer\Data\" />
-    <Folder Include="Areas\Writer\Models\" />
     <Folder Include="wwwroot\Template\images\references\" />
   </ItemGroup>
 
