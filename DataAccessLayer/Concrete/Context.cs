@@ -31,5 +31,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<UserMessage> UserMessages { get; set; }
         public DbSet<Test1> Test1s { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Mesaj> Mesajs{ get; set; }
     }
 }

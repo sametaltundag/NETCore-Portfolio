@@ -203,3 +203,5 @@ D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Areas\Writer\Views\_
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Areas\Writer\Views\Login\Index.cshtml.g.cs
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Areas\Writer\Views\Profile\Index.cshtml.g.cs
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Areas\Writer\Views\Dashboard\Index.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\WriterUser\Index.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Views\ErrorPage\Error404.cshtml.g.cs
