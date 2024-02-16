@@ -201,3 +201,5 @@ D:\NETCorePortfolio\NETCorePortfolio\bin\Debug\net5.0\Microsoft.Extensions.Ident
 D:\NETCorePortfolio\NETCorePortfolio\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Areas\Writer\Views\_ViewImports.cshtml.g.cs
 D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Areas\Writer\Views\Login\Index.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Areas\Writer\Views\Profile\Index.cshtml.g.cs
+D:\NETCorePortfolio\NETCorePortfolio\obj\Debug\net5.0\Razor\Areas\Writer\Views\Dashboard\Index.cshtml.g.cs

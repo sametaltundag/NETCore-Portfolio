@@ -44,7 +44,7 @@ namespace NETCorePortfolio.Areas.Writer.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index","Login");
+                    return Redirect("/Writer/Login/Index");
                 }
                 else
                 {

@@ -1,0 +1,50 @@
+﻿@model EntityLayer.Concrete.WriterUser
+
+@{
+    ViewData["Title"] = "Profil";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+            <h4 class="card-title"> @ViewBag.NS Profil Bilgileri</h4>
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Ad</label>
+                        <input type="text"  class="form-control" placeholder="Ad">
+                    </div>
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Soyad</label>
+                    <input type="text"  class="form-control" placeholder="Soyad">
+                </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Eposta</label>
+                    <input type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Şifre</label>
+                    <input type="password"  class="form-control" placeholder="Şifre">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Şifre Tekrar</label>
+                    <input type="password" class="form-control" placeholder="Şifre Tekrar">
+                    </div>
+
+                    <div class="form-group">
+                        <label>File upload</label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            <input type="file" class="form-control file-upload-info" placeholder="Görsel seç">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+                    <button class="btn btn-light">İptal</button>
+                </form>
+            </div>
+        </div>
+    </div>

@@ -1,4 +1,9 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<Notification>
+@{
+    string durum = "";
+    string metin = "";
+}
 @{
     ViewData["Title"] = "Test";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
@@ -8,28 +13,184 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Tablo Verileri</h4>
+                <div class="d-flex justify-content-between">
+                    <h4 class="card-title">Tablo Verileri (@Model.Count)</h4>
+                    <button class="btn btn-success" type="button" data-toggle="modal" data-target="#yenibildirimekle">Yeni Bildirim Oluştur</button>
+                </div>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Profile</th>
-                                <th>VatNo.</th>
-                                <th>Created</th>
-                                <th>Status</th>
+                                <th>#</th>
+                                <th>Başlık</th>
+                                <th>Tarih</th>
+                                <th>Tür</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Jacob</td>
-                                <td>53275531</td>
-                                <td>12 May 2017</td>
-                                <td><label class="badge badge-danger">Pending</label></td>
-                            </tr>
+                            @foreach(var i in Model)
+                            {
+                                if(i.Status == 0)
+                                {
+                                    durum = "success";
+                                    metin = "Yeni İçerik";
+                                } else if (i.Status == 1)
+                                {
+                                    durum = "warning";
+                                    metin = "Hazırlanıyor";
+                                }
+                                else if (i.Status == 2)
+                                {
+                                    durum = "primary";
+                                    metin = "Güncel";
+                                }
+                                <tr>
+                                    <td>@i.Id</td>
+                                    <td>@i.Title</td>
+                                    <td>@(((DateTime)i.Date).ToString("dd-MMM-yyyy"))</td>
+                                    <td><label class="badge badge-@durum">@metin</label></td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-primary" onclick="openEditNotification(@i.Id)">Detaylar</button>
+                                        <a href="/Default/DeleteNotification/@i.Id" class="btn btn-outline-danger">Sil</a>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
+                @if (Model.Count == 0)
+                {
+                    <p class="mt-3 text-center">Herhangi bir veri bulunamadı...</p>
+                }
             </div>
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="yenibildirimekle" tabindex="-1" role="dialog" aria-labelledby="yenibildirimekleTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="yenibildirimekleTitle">Yeni Bildirim Oluştur</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Default/AddNotification">
+                <div class="modal-body">
+                    <div class="row d-flex flex-column">
+                        <div class="form-group">
+                            <label>Başlık</label>
+                            <input type="text" class="form-control" name="Title" />
+                        </div>
+                        <div class="form-group">
+                            <label>İçerik</label>
+                            <textarea class="form-control" name="Content"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Tarih</label>
+                            <input type="datetime-local" class="form-control" name="Date" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Durum</label>
+                            <input type="number" min="0" max="3" class="form-control" name="Status" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Oluştur</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="duzenleModal" tabindex="-1" role="dialog" aria-labelledby="duzenleModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="duzenleModalTitle">Bildirim Düzenle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editNotificationForm" method="post" action="/Default/EditNotification/">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="editTitle">Başlık</label>
+                        <input type="text" class="form-control" id="editTitle" name="Title" />
+                    </div>
+                    <div class="form-group">
+                        <label for="editContent">İçerik</label>
+                        <textarea class="form-control" id="editContent" name="Content"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editDate">Tarih</label>
+                        <input type="datetime-local" class="form-control" id="editDate" name="Date" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editStatus">Durum</label>
+                        <input type="number" min="0" max="3" class="form-control" id="editStatus" name="Status" />
+
+                    </div>
+                    <input type="hidden" id="editNotId" name="Id" />
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openEditNotification(notid) {
+        // AJAX isteği yap
+        $.ajax({
+            url: '/Default/NotificationDetail/' + notid,
+            type: 'GET',
+            success: function (response) {
+                // Gelen verilerle modalı doldur
+                $('#editTitle').val(response.title);
+                $('#editContent').val(response.content);
+                $('#editDate').val(response.date);
+                $('#editStatus').val(response.status);
+                $('#editNotId').val(response.id);
+
+                $('#duzenleModal').modal('show');
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
+
+    // Kaydet butonuna basıldığında
+    $(document).on('submit', '#editNotificationForm', function (e) {
+        e.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
+
+        var formData = $(this).serialize(); // Form verilerini al
+        var url = $(this).attr('action'); // Formun gönderileceği URL
+
+        // AJAX isteği yap
+        $.post(url, formData)
+            .done(function (response) {
+                // Başarılı bir şekilde işlem yapıldığında modalı kapat
+                $('#duzenleModal').modal('hide');
+                // İlgili sayfayı yeniden yükle
+                window.location.reload();
+            })
+            .fail(function (error) {
+                console.log(error);
+            });
+    });
+
+
+</script>

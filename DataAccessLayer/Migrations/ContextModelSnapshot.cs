@@ -151,6 +151,30 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Portfolio", b =>
                 {
                     b.Property<int>("PortfolioID")
@@ -328,6 +352,33 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("UserMessages");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.WriterMessage", b =>
+                {
+                    b.Property<int>("WriterMessageID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MessageContent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Receiver")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("WriterMessageID");
+
+                    b.ToTable("WriterMessages");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.WriterRole", b =>

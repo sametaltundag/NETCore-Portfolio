@@ -54,7 +54,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Writer\Data\" />
+    <Folder Include="wwwroot\userimage\" />
     <Folder Include="wwwroot\Template\images\references\" />
   </ItemGroup>
 

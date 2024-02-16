@@ -10,11 +10,11 @@ namespace NETCorePortfolio.Areas.Writer.Controllers
     public class LoginController : Controller
     {
 
-        private readonly SignInManager<WriterUser> signInManager;
+        private readonly SignInManager<WriterUser> _signInManager;
 
         public LoginController(SignInManager<WriterUser> signInManager)
         {
-            this.signInManager = signInManager;
+            this._signInManager = signInManager;
         }
 
         [HttpGet]
@@ -28,17 +28,23 @@ namespace NETCorePortfolio.Areas.Writer.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await signInManager.PasswordSignInAsync(p.Username,p.Password,true,true);
+                var result = await _signInManager.PasswordSignInAsync(p.Username,p.Password,true,true);
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Default");
+                    return LocalRedirect("/Writer/Profile/Index");
                 } else
                 {
                     ModelState.AddModelError("", "Hatalı kullanıcı adı veya şifre..");  
                 }
             }
             return View();
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Login");
         }
     }
 }
