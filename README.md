@@ -16,3 +16,16 @@ N-Tier Architecture mimarisi ile kodlanmıştır. Ağırlıklı olarak OOB (Obje
 - Swagger
 - Identity
 - AJAX
+![Proje Görseli](/NETCorePortfolio/wwwroot/projectimages/main.png)
+![Proje Görseli](/NETCorePortfolio/wwwroot/projectimages/services.png)
+![Proje Görseli](/NETCorePortfolio/wwwroot/projectimages/skills.png)
+![Proje Görseli](/NETCorePortfolio/wwwroot/projectimages/contact.png)
+![Proje Görseli](/NETCorePortfolio/wwwroot/projectimages/dashboard.png)
+![Proje Görseli](/NETCorePortfolio/wwwroot/projectimages/dashboard2.png)
+![Proje Görseli](/NETCorePortfolio/wwwroot/projectimages/dash-skill.png)
+![Proje Görseli](/NETCorePortfolio/wwwroot/projectimages/skill-edit.png)
+![Proje Görseli](/NETCorePortfolio/wwwroot/projectimages/service-edit.png)
+![Proje Görseli](/NETCorePortfolio/wwwroot/projectimages/projects.png)
+![Proje Görseli](/NETCorePortfolio/wwwroot/projectimages/writer-dash.png)
+![Proje Görseli](/NETCorePortfolio/wwwroot/projectimages/notifications.png)
+![Proje Görseli](/NETCorePortfolio/wwwroot/projectimages/swagger.png)
